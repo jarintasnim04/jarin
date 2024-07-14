@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- Website template by freewebsitetemplates.com -->
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Zarin's Travel Blog</title>
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <style>
+        /* Styling for popup */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            text-align: center;
+            z-index: 1000; /* Ensure it appears on top */
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            z-index: 900; /* Place overlay behind popup */
+        }
+        .countdown {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .user-input {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        // Function to show popup and overlay
+        function showPopup() {
+            var popup = document.getElementById('popup');
+            var overlay = document.getElementById('overlay');
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        // Function to hide popup and overlay
+        function hidePopup() {
+            var popup = document.getElementById('popup');
+            var overlay = document.getElementById('overlay');
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+
+        // Function to display current date and time
+        function displayDateTime() {
+            document.getElementById('demo').innerHTML = Date();
+        }
+
+        // Function to calculate countdown
+        function countdown() {
+            var endDate = new Date('2024-10-10'); // Adjust the end date here
+            var now = new Date();
+            var timeLeft = endDate - now;
+
+            if (timeLeft < 0) {
+                document.getElementById('countdown').innerHTML = "Countdown expired";
+            } else {
+                var days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                var hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            }
+        }
+
+        // Update countdown every second
+        setInterval(countdown, 1000);
+        
+        // Function to display suggested destination
+        function suggestDestination() {
+            var suggestion = document.getElementById('destinationInput').value;
+            document.getElementById('suggestion').innerHTML = "Suggested destination: " + suggestion;
+        }
+    </script>
+</head>
+<body onload="showPopup()">
+    <div class="header">
+        <div>
+            <a href="index.html" id="logo"><img src="images/logo.png" alt="logo"></a>
+            <ul>
+                <li class="selected">
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="a.html">About Me</a>
+                </li>
+                <li>
+                    <a href="c.html">Destinations</a>
+                    <ul>
+                        <li>
+                            <a href="c.html">Memories</a>
+                        </li>
+                        <li>
+                            <a href="c.html">Foods</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="blog.html">Blog</a>
+                </li>
+                <li>
+                    <a href="locator.html">Next Destination</a>
+                </li>
+            </ul>
+        </div>
+        <div class="featured">
+            <div>
+                <h3>Always smile<br> to make your life worthwhile</h3>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <div>
+            <h1>WELCOME TO MY TRAVEL BLOG</h1>
+            <p>COME EXPLORE THE WORLD WITH ME</p>
+            <h2>Suggest me a destination</h2>
+            <input type="text" id="destinationInput" placeholder="Enter your suggested destination">
+            <button onclick="suggestDestination()">Suggest</button>
+            <p id="suggestion"></p>
+            <ul>
+                <li>
+                    <a href="c.html"><img src="images/figure2.jpg" alt=""></a> <a href="collections.html">MOUNT FUJI</a>
+                </li>
+                <li>
+                    <a href="c.html"><img src="images/figure3.jpg" alt=""></a> <a href="collections.html">KYOTO</a>
+                </li>
+                <li>
+                    <a href="c.html"><img src="images/figure4.jpg" alt=""></a> <a href="collections.html">OSAKA</a>
+                </li>
+                <li>
+                    <a href="c.html"><img src="images/figure5.jpg" alt=""></a> <a href="collections.html">TOKYO</a>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h1>My Blogs</h1>
+            <div>
+                <h3>Explore Tokyo with me</h3>
+                <img src="images/odaiba.jpg" alt="Odaiba">
+                <p>Tokyo and Odaiba offer a blend of traditional and modern attractions. In Tokyo, visit Senso-ji Temple for a historical experience, then head to Shibuya Crossing for vibrant city life. Enjoy panoramic views from Tokyo Tower and find tranquility at Meiji Shrine. Akihabara is perfect for pop culture enthusiasts, while Tsukiji Outer Market offers fresh seafood delights. In Odaiba, stroll along Odaiba Seaside Park, explore interactive art at TeamLab Borderless, and shop at DiverCity Tokyo Plaza. Relax at Oedo Onsen Monogatari's hot springs, and visit the futuristic Fuji TV Building for stunning views. These destinations promise unforgettable experiences.</p>
+                <button onclick="window.location.href='https://example.com'">Read More</button>
+            </div>    
+        </div>
+    </div>
+    <div class="countdown">
+        <h2>Stay tuned for my next visit, Destination is 'OKINAWA'</h2>
+        <p id="countdown"></p>
+    </div>
+    <div class="user-input">
+        <h1>Confused?</h1>
+        <button type="button" onclick="displayDateTime()">Click me to display Date and Time.</button>
+        <p id="demo"></p>
+    </div>
+    <div id="overlay" class="overlay"></div>
+    <div id="popup" class="popup">
+        <h2>Hello dear visitor!</h2>
+        <p>Would you like to see my travel destinations?</p>
+        <button onclick="hidePopup()">OK</button>
+    </div>
+    <div class="footer">
+        <div>
+            <p>JARIN TASNIM-23319141</p>
+        </div>
+    </div>
+</body>
+</html>
